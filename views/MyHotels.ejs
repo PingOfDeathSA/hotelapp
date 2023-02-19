@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>SYGE</title>
+  <!-- Googel fonts linking -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
+
+  <!-- Googel fonts linking -->
+  <!-- CSS  BOOTSRAP STYLE SHEETS-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;900&family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
+ <!-- CSS BOOTSRAP STYLE SHEETS-->
+ <link rel="stylesheet" type="text/css" href="/public/css/styles.css">
+ 
+ 
+</head>
+
+<body>
+
+  <section id="title">
+<div class="container-fluid">
+
+  <nav class="navbar  navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="">SYGE</a>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item btn btn-outline-success">
+            <a class="nav-link" href=""><p class="Contact_">Contact</p> </a>
+        </li>
+        <li class="nav-item btn btn-outline-success">
+            <a class="nav-link 2nd" href=""><p class="Contact_">About</p></a>
+        </li>
+        <li class="nav-item btn btn-outline-success">
+            <a class="nav-link" href=""><p class="Contact_">Add Hotel</p></a>
+        </li> 
+    </ul>
+ </div>
+</nav>
+
+
+
+  <!-- Title -->
+<div  class="row">
+<div class="col-lg-6">
+  <h1>Experience luxury at its finest, book your stay with us and let us take care of the rest!</h1> 
+  <!-- <button type="button" class="btn-lg btn-dark top-button" >
+    <i class="fab fa-github"></i> GitHub</button> -->
+  
+    
+<a href="Bookings.html"> <button type="button" class="btn  btn-success top-button">  Book Now</button></a>
+ 
+
+
+</div>
+
+<div class="col-lg-6">
+
+  
+  
+
+</div>
+
+</div>
+
+  
+
+</div>
+    <!-- Nav Bar -->
+
+
+
+    
+
+  </section>
+
+  <!-- <section id="features">
+    <div class="">
+      
+      <div class="container-fluid">
+        <div class="row"> <div class="col-lg-4">
+          <div class="container-fluid check-round"><i class="fa fa-solid fa-check"></i></div><h3>Easy to use.</h3>
+          <p>So easy to use, even your dog could do it.</p></div>
+          <div class="col-lg-4">
+            <div class="container-fluid check-round1"><i class="fa fa-heart"></i></div><h3>Elite Clientele</h3>
+            <p>SWe have all the dogs, the greatest dogs.</p></div>
+            <div class="col-lg-4">
+              <div class="container-fluid check-round2"><i class="fa fa-globe"></i></div><h3>Guaranteed to work.</h3>
+              <p>Find the love of your dog's life or your money back.</p></div>
+       </div>
+       
+      </div>
+    </div>
+  </section> -->
+
+  <nav class="navbar navbar-light bg-light justify-content-between">
+    <a class="navbar-brand">Welcome to SYGE</a>
+<!-- Add a form element to contain the dropdown list and the submit button -->
+<form action="/search" method="post">
+  <input type="hidden" name="selectedLocation" id="selectedLocation">
+  <!-- Add a dropdown button to trigger the dropdown menu -->
+  <div class="dropdown">
+    <button class="btn btn-outline-danger dropdown-toggle" type="button" id="hotelDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Select a Hotel Location
+    </button>
+    <!-- Add a dropdown menu that contains the selectable items -->
+    <div class="dropdown-menu" aria-labelledby="hotelDropdown">
+      <a class="dropdown-item location" href="#" data-location=""> Default</a>
+      <% Hotel.forEach(function(item) { %>
+        <a class="dropdown-item location" href="#" data-location="<%= item.location %>"><%= item.location %></a>
+      <% }); %>
+    </div>
+  </div>
+  <!-- Remove the submit button -->
+</form>
+
+<script>
+  // Get the hidden input field
+  const selectedLocationInput = document.querySelector('#selectedLocation');
+
+  // Listen to the click event on the dropdown items
+  const dropdownItems = document.querySelectorAll('.dropdown-item.location');
+  dropdownItems.forEach(item => {
+    item.addEventListener('click', (event) => {
+      event.preventDefault();
+      // Check if the selected value is empty
+      if (event.target.dataset.location === '') {
+        // Go back to the previous page
+        window.history.back();
+      } else {
+        // Update the hidden input field with the selected value
+        selectedLocationInput.value = event.target.dataset.location;
+        // Submit the form
+        document.querySelector('form').submit();
+      }
+    });
+  });
+</script>
+
+
+
+
+  </nav>
+
+
+ <section class="lidtpadding">
+  <div class="col auto divBockitems">
+  <div class="divBockitems">
+    <% Hotel.forEach(function(item) { %>
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <h6 class="divBockitems"> <%= item.name %></h6>
+      
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="ProfileP" src="<%= item.picture1 %>"  alt="">
+        </div>
+        <div class="carousel-item ">
+          <img class="ProfileP" src="<%= item.picture2 %>"  alt="">
+        </div>
+        <div class="carousel-item">
+          <img class="ProfileP" src="<%= item.picture3 %>"  alt="">
+        </div>
+      </div>
+      <div class="divBockitems">  <img class="allpicutures" src="<%= item.picture1 %>" style="width: 100px" alt="allpicutures"> <div class="divBockitems">  <img class="allpicutures" src="<%= item.picture3 %>" style="width: 100px" alt=""></div> <div class="divBockitems">  <img class="" src="<%= item.picture2 %>" style="width: 100px" alt=""></div></div>
+      <h6 class="location"> <td>Location: </td><%= item.location %></h6>   
+      <td> R <%= item.price %>.00</td>
+      <!-- <td>Available <%= item.available_dates[0] %> </td> -->
+      <td>Rating <%= item.rating %> ⭐</td>
+      <h6>Available</h6> 
+      <form action="/delete" method="post"> <input type="checkbox" name="checkbox" value= "<%=item._id%>" onChange = "this.form.submit()"> </form>
+      <div class="float-md-left"><a href="Bookings.html" class="btn btn btn-success top-button">Book Now</a></div></div>
+  </div>
+  <% }); %>
+</div>
+</section>
+  <div class="row">
+    <div class="col-lg-12 footer">  <footer id="footer">
+      <p>© Copyright Syge Devs</p>
+    </footer>
+  </div>
+  </div>
+  
+
+ <script src="javascript.ejs"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+<%- include("header") -%>
+
+
+
